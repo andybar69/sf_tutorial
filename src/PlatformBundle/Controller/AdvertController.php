@@ -2,6 +2,7 @@
 
 namespace PlatformBundle\Controller;
 
+use PlatformBundle\Helpers\Test;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -60,6 +61,13 @@ class AdvertController extends Controller
 
     public function addAction(Request $request)
     {
+        $antispam = $this->container->get('platform.antispam');
+        $text = '...';
+        //var_dump($antispam);
+        if ($antispam->isSpam($text)) {
+            throw new \Exception('Votre message a été détecté comme spam !');
+        }
+
         $form = null;
         if ($request->isMethod('POST')) {
             $session = $request->getSession();
