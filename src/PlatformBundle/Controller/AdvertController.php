@@ -13,6 +13,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use PlatformBundle\Form\AdvertType;
+use PlatformBundle\Entity\Question;
 
 class AdvertController extends Controller
 {
@@ -97,6 +99,29 @@ class AdvertController extends Controller
 
     public function addAction(Request $request)
     {
+        $advert = new Advert();
+        $quest = new Question();
+        $quest->setText('vopros');
+        $advert->setQuestion($quest);
+
+        $quest2 = new Question();
+        $quest2->setText('vopros 3333');
+        $advert->setQuestion($quest2);
+
+        $form = $this->createForm(new AdvertType(), $advert);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() and $form->isValid()) {
+            dump($form);
+            die;
+        }
+
+        return $this->render('PlatformBundle:Advert:add.html.twig',
+            array('form' => $form->createView())
+        );
+
+
         /*$antispam = $this->container->get('platform.antispam');
         $text = '...';
         //var_dump($antispam);

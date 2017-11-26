@@ -1,0 +1,11 @@
+{% extends "PlatformBundle::layout.html.twig" %}
+
+{% block title %}
+    Créer une annonce - {{ parent() }}
+{% endblock %}
+
+{% block platform_body %}
+    <h2>Créer une annonce</h2>
+    {{ include("PlatformBundle:Advert:form.html.twig") }}
+
+{% endblock %}

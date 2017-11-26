@@ -6,6 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 use PlatformBundle\Entity\Category;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Event\LifecycleEventArgs;
+//use Symfony\Component\Console\Question\Question;
+use PlatformBundle\Entity\Question;
 
 /**
  * Advert
@@ -93,6 +95,12 @@ class Advert
     private $slug;
 
     /**
+     *
+     * @ORM\OneToMany(targetEntity="PlatformBundle\Entity\Question", mappedBy="advert")
+     */
+    private $questions;
+
+    /**
      * Advert constructor.
      */
     public function __construct()
@@ -100,6 +108,7 @@ class Advert
         $this->date = new \DateTime();
         $this->categories = new ArrayCollection();
         $this->applications = new ArrayCollection();
+        $this->questions = new ArrayCollection();
     }
 
     /**
@@ -461,6 +470,20 @@ class Advert
 
         $slug = $repository->createUniqueSlug($this->slug);
         $this->setSlug($slug);
+    }
+
+    public function setQuestion(\PlatformBundle\Entity\Question $question)
+    {
+        $this->questions[] = $question;
+    }
+
+    public function getQuestions()
+    {
+        /*$quest = new Question();
+        $quest->setText('qsdfghjk');
+        $this->questions[0] = $quest;*/
+        return $this->questions;
+        //return 'aaaa';
     }
 
 }
