@@ -102,18 +102,25 @@ class AdvertController extends Controller
         $advert = new Advert();
         $quest = new Question();
         $quest->setText('vopros');
+        $quest->setEnabled(1);
         $advert->setQuestion($quest);
+        $quest->setAdvert($advert);
 
         $quest2 = new Question();
         $quest2->setText('vopros 3333');
+        $quest2->setEnabled(1);
         $advert->setQuestion($quest2);
+        //$quest2->setAdvert($advert);
 
         $form = $this->createForm(new AdvertType(), $advert);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() and $form->isValid()) {
-            dump($form);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($form->getData());
+            $em->flush();
+            dump($form->getData());
             die;
         }
 

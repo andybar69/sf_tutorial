@@ -96,7 +96,8 @@ class Advert
 
     /**
      *
-     * @ORM\OneToMany(targetEntity="PlatformBundle\Entity\Question", mappedBy="advert")
+     * @ORM\ManyToMany(targetEntity="PlatformBundle\Entity\Question", mappedBy="advert", cascade={"persist"})
+     * @ORM\JoinTable(name="questions_adverts")
      */
     private $questions;
 

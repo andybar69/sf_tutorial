@@ -37,17 +37,22 @@ class Question
     private $enabled;
 
     /****
-     * @ORM\OneToOne(targetEntity="PlatformBundle\Entity\Answer", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="PlatformBundle\Entity\Answer", mappedBy="questions", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $answer;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="PlatformBundle\Entity\Advert", inversedBy="questions", cascade={"persist"})
+     */
+    private $advert;
 
     //private $choice;
 
 
     public function __construct()
     {
-        //$this->answers = new ArrayCollection();
+        $this->advert = new ArrayCollection();
     }
 
     /**
@@ -130,5 +135,18 @@ class Question
         return $this->answer;
         //return $this->answers->getResult();
     }
+
+    public function setAdvert($advert)
+    {
+        $this->advert[] = $advert;
+
+        return $this;
+    }
+
+    public function getAdvert()
+    {
+        return $this->advert;
+    }
+
 }
 

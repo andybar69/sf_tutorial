@@ -19,7 +19,7 @@ class QuestionType extends AbstractType
     {
         $builder
             ->add('text', 'text')
-            ->add('answers', ChoiceType::class, array(
+            ->add('answer', ChoiceType::class, array(
                 //'mapped' => false,
                 'choices' => array(
                     '1' => 'Yes',

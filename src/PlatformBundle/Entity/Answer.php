@@ -2,12 +2,13 @@
 
 namespace PlatformBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Answer
  *
- * @ORM\Table(name="answer")
+ * @ORM\Table(name="answers")
  * @ORM\Entity(repositoryClass="PlatformBundle\Repository\AnswerRepository")
  */
 class Answer
@@ -22,16 +23,17 @@ class Answer
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="PlatformBundle\Entity\Question", inversedBy="answers")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToMany(targetEntity="PlatformBundle\Entity\Question", inversedBy="answers")
+     * @ORM\JoinTable(name="answers_questions")
      */
     private $question;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="PlatformBundle\Entity\Question", inversedBy="answers")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $advert;
+
+    public function __construct()
+    {
+        $this->question = new ArrayCollection();
+
+    }
 
     /**
      * @var bool
@@ -73,6 +75,18 @@ class Answer
     public function getResult()
     {
         return $this->result;
+    }
+
+    public function setQuestion(Question $question)
+    {
+        $this->question[] = $question;
+
+        return $this;
+    }
+
+    public function getQuestion()
+    {
+        return $this->question;
     }
 }
 
