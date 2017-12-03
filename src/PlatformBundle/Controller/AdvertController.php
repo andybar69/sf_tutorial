@@ -2,6 +2,7 @@
 
 namespace PlatformBundle\Controller;
 
+use PlatformBundle\Entity\Answer;
 use PlatformBundle\Helpers\Test;
 use PlatformBundle\Entity\Advert;
 use PlatformBundle\Entity\Image;
@@ -46,6 +47,9 @@ class AdvertController extends Controller
             )
         );
 
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('PlatformBundle:Advert');
+        $listAdverts = $repo->findAll();
         return $this->render('PlatformBundle:Advert:index.html.twig', array(
             'listAdverts' => $listAdverts
         ));
@@ -71,7 +75,7 @@ class AdvertController extends Controller
 
         //$res = $repository->getAdvertWithCategories(array('Graphisme'));
 
-        $res = $repository->myFindAll();
+        //$res = $repository->myFindAll();
         //var_dump($res);
         // On récupère la liste des candidatures de cette annonce
         /*$listApplications = $em
@@ -93,32 +97,42 @@ class AdvertController extends Controller
             'advert' => $advert,
             'listApplications' => $listApplications,
             'listAdvertSkills' => $listAdvertSkills,
-            'result' => $res
+            //'result' => $res
         ));
     }
 
     public function addAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('PlatformBundle:Question');
+        $questions = $repo->findBy(['enabled' => true]);
+
         $advert = new Advert();
-        $quest = new Question();
-        $quest->setText('vopros');
-        $quest->setEnabled(1);
-        $advert->setQuestion($quest);
-        $quest->setAdvert($advert);
 
-        $quest2 = new Question();
-        $quest2->setText('vopros 3333');
-        $quest2->setEnabled(1);
-        $advert->setQuestion($quest2);
-        //$quest2->setAdvert($advert);
-
+        foreach ($questions as $question) {
+            //dump($question);
+            //$a = new Answer();
+            //$question->setAnswer($a);
+            $advert->addQuestion($question);
+        }
+        dump($advert);
         $form = $this->createForm(new AdvertType(), $advert);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() and $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($form->getData());
+            $advert = $form->getData();
+            $questions = $advert->getQuestions();
+            foreach ($questions as $item) {
+                dump($item);
+                $answer = $item->getAnswer();
+                $advert->addAnswer($answer);
+                $answer->setQuestion($item);
+                $answer->setAdvert($advert);
+            }
+            $em->persist($answer);
+            $em->persist($advert);
             $em->flush();
             dump($form->getData());
             die;

@@ -94,12 +94,16 @@ class Advert
      */
     private $slug;
 
-    /**
-     *
-     * @ORM\ManyToMany(targetEntity="PlatformBundle\Entity\Question", mappedBy="advert", cascade={"persist"})
-     * @ORM\JoinTable(name="questions_adverts")
-     */
+
     private $questions;
+
+
+    /**
+     * @var
+     *
+     * @ORM\OneToMany(targetEntity="PlatformBundle\Entity\Answer", mappedBy="advert", cascade={"persist"})
+     */
+    private $answer;
 
     /**
      * Advert constructor.
@@ -110,6 +114,7 @@ class Advert
         $this->categories = new ArrayCollection();
         $this->applications = new ArrayCollection();
         $this->questions = new ArrayCollection();
+        $this->answer = new ArrayCollection();
     }
 
     /**
@@ -276,6 +281,7 @@ class Advert
     public function addCategory(Category $category)
     {
         $this->categories[] = $category;
+        //dump($this->categories);
 
         return $this;
     }
@@ -473,9 +479,15 @@ class Advert
         $this->setSlug($slug);
     }
 
-    public function setQuestion(\PlatformBundle\Entity\Question $question)
+    public function addQuestion(\PlatformBundle\Entity\Question $question)
     {
         $this->questions[] = $question;
+        //dump($this->questions);
+    }
+
+    public function setQuestion(\PlatformBundle\Entity\Question $question)
+    {
+
     }
 
     public function getQuestions()
@@ -485,6 +497,21 @@ class Advert
         $this->questions[0] = $quest;*/
         return $this->questions;
         //return 'aaaa';
+    }
+
+    public function addAnswer($answer)
+    {
+        $this->answer[] = $answer;
+    }
+
+    public function removeAnswer($answer)
+    {
+        $this->answer->removeElement($answer);
+    }
+
+    public function getAnswer()
+    {
+        return $this->answer;
     }
 
 }

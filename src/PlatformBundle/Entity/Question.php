@@ -37,22 +37,19 @@ class Question
     private $enabled;
 
     /****
-     * @ORM\OneToOne(targetEntity="PlatformBundle\Entity\Answer", mappedBy="questions", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="PlatformBundle\Entity\Answer", mappedBy="question", cascade="{persist}")
      * @ORM\JoinColumn(nullable=false)
      */
     private $answer;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="PlatformBundle\Entity\Advert", inversedBy="questions", cascade={"persist"})
-     */
-    private $advert;
 
-    //private $choice;
 
 
     public function __construct()
     {
-        $this->advert = new ArrayCollection();
+        //$this->advert = new ArrayCollection();
+        //$this->answer = new ArrayCollection();
+        //dump(__CLASS__);
     }
 
     /**
@@ -113,40 +110,55 @@ class Question
         return $this->enabled;
     }
 
-    /*public function getChoice()
-    {
-        return $this->choice;
-    }
-
-    public function setChoice($choice)
-    {
-        $this->choice = $choice;
-    }*/
-
+    /**
+     * @param $val
+     * @return $this
+     */
     public function setAnswer($val)
     {
-        //$this->answers = $val;
-        $this->answer = new Answer();
-        $this->answer->setResult($val);
-    }
-
-    public function getAnswer()
-    {
-        return $this->answer;
-        //return $this->answers->getResult();
-    }
-
-    public function setAdvert($advert)
-    {
-        $this->advert[] = $advert;
+        $this->answer = $val;
 
         return $this;
     }
 
-    public function getAdvert()
+    /*public function addAnswer($answer)
+    {
+        $this->answer[] = $answer;
+
+        return $this;
+    }
+
+    public function removeAnswer($answer)
+    {
+        $this->answer->removeElement($answer);
+    }*/
+
+    /**
+     * @return mixed
+     */
+    public function getAnswer()
+    {
+        return $this->answer;
+    }
+
+    /**
+     * @param $advert
+     * @return $this
+     */
+    /*public function setAdvert($advert)
+    {
+        $this->advert[] = $advert;
+
+        return $this;
+    }*/
+
+    /**
+     * @return ArrayCollection
+     */
+    /*public function getAdvert()
     {
         return $this->advert;
-    }
+    }*/
 
 }
 

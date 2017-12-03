@@ -25,3 +25,20 @@ platform_delete:
     defaults: { _controller: PlatformBundle:Advert:delete }
     requirements:
         id: \d+
+
+
+question_list:
+    path: /question
+    defaults: {_controller: PlatformBundle:Question:index}
+
+question_add:
+    path: /question/add
+    defaults: {_controller: PlatformBundle:Question:add}
+
+question_edit:
+    path: /question/edit/{id}
+    defaults: {_controller: PlatformBundle:Question:edit}
+
+question_delete:
+    path: /question/delete/{id}
+    defaults: {_controller: PlatformBundle:Question:delete}

@@ -3,11 +3,20 @@
 namespace PlatformBundle\Form;
 
 use PlatformBundle\Form\QuestionType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use PlatformBundle\Entity\Advert;
+use PlatformBundle\Entity\Question;
+
 
 class AdvertType extends AbstractType
 {
@@ -17,52 +26,23 @@ class AdvertType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', 'text')
-            ->add('author', 'text')
-            ->add('content', 'textarea')
-            ->add('date', 'date')
-            ->add('published', 'checkbox', array('required' => false))
+            ->add('title', TextType::class)
+            ->add('author', TextType::class)
+            ->add('content', TextareaType::class)
+            ->add('date', DateType::class)
+            ->add('published', CheckboxType::class, ['required' => false])
             ->add('questions', CollectionType::class,  array(
                 'entry_type' => QuestionType::class,
                 'entry_options' => array('label' => false),
-                //'mapped' => false,
-                /*'choices' => array(
-                    '1' => 'Yes',
-                    '0' => 'No'
-                ),
-                'multiple' => false,
-                'expanded' => true,
-                'required' => true,*/
             ))
-            /*->add('question1' ,  ChoiceType::class, array(
-                    'mapped' => false,
-                    //'data' => 'abcdef'
-                'choices' => array(
-                    'male' => 'Male',
-                    'female' => 'Female'
-                ),
-                'multiple' => false,
-                'expanded' => true,
-                'required' => true,
-                'data'     => 'male',
-                'label' => 'Are you sure that...'
-            ))
-            ->add('question2' ,  ChoiceType::class, array(
-                'mapped' => false,
-                //'data' => 'abcdef'
-                'choices' => array(
-                    '1' => 'Yes',
-                    '0' => 'No'
-                ),
-                'multiple' => false,
-                'expanded' => true,
-                'required' => true,
-                'data'     => 'male',
-                'label' => 'Are you sure that...'
-            ))*/
-            //->add('image')
-            //->add('categories')
-            ->add('save', 'submit')
+            ->add('image', new ImageType())
+               ->add('categories', EntityType::class, array(
+                   'class'    => 'PlatformBundle:Category',
+                   'choice_label' => 'name',
+                   'multiple' => true,
+                   'expanded' => false,
+               ))
+            ->add('save', SubmitType::class)
         ;
     }
     
@@ -72,7 +52,7 @@ class AdvertType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'PlatformBundle\Entity\Advert'
+            'data_class' => Advert::class
         ));
     }
 

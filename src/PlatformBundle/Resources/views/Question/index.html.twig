@@ -1,0 +1,31 @@
+{% extends "PlatformBundle::layout.html.twig" %}
+
+{% block title %}
+    Questions - {{ parent() }}
+{% endblock %}
+
+{% block platform_body %}
+    <a href="{{ url('question_add') }}" class="btn btn-default">Add</a>
+{{ dump(list) }}
+    <div class="container">
+    {% for question in list %}
+        <div class="row">
+            <div class="col-md-3"><p>{{ question.text }}</p></div>
+            <div class="col-md-3">
+                {% if (question.enabled == 'true') %}
+                    <button type="button" class="btn btn-success btn-sm">Yes</button>
+                {% else %}
+                    <button type="button" class="btn btn-danger btn-sm">No</button>
+                {% endif %}
+            </div>
+            <div class="col-md-2">
+                <a href="{{ url('question_edit', {'id': question.id}) }}">Edit</a>
+            </div>
+            <div class="col-md-2">
+                <a href="{{ url('question_delete', {'id': question.id}) }}">Delete</a>
+            </div>
+        </div>
+
+    {%  endfor %}
+    </div>
+{% endblock %}

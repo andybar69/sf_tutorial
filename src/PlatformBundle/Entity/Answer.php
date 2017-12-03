@@ -23,25 +23,32 @@ class Answer
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity="PlatformBundle\Entity\Question", inversedBy="answers")
-     * @ORM\JoinTable(name="answers_questions")
-     */
-    private $question;
-
-
-    public function __construct()
-    {
-        $this->question = new ArrayCollection();
-
-    }
-
-    /**
      * @var bool
      *
      * @ORM\Column(name="result", type="boolean")
      */
     private $result;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="PlatformBundle\Entity\Question", inversedBy="answer", cascade={"persist"})
+     * @ORM\JoinColumn(name="question_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
+     */
+    private $question;
+
+    /**
+     * @var Advert $advert
+     *
+     * @ORM\ManyToOne(targetEntity="PlatformBundle\Entity\Advert", inversedBy="answer", cascade={"persist"})
+     * @ORM\JoinColumn(name="advert_id", referencedColumnName="id", nullable=false)
+     */
+    private $advert;
+
+
+    public function __construct()
+    {
+        //$this->question = new ArrayCollection();
+        dump(__METHOD__);
+    }
 
     /**
      * Get id
@@ -79,7 +86,7 @@ class Answer
 
     public function setQuestion(Question $question)
     {
-        $this->question[] = $question;
+        $this->question = $question;
 
         return $this;
     }
@@ -87,6 +94,23 @@ class Answer
     public function getQuestion()
     {
         return $this->question;
+    }
+
+    public function setAdvert($advert)
+    {
+        $this->advert = $advert;
+
+        return $this;
+    }
+
+    public function getAdvert()
+    {
+        return $this->advert;
+    }
+
+    public function __toString()
+    {
+        return 'answer';
     }
 }
 
