@@ -4,6 +4,7 @@ namespace PlatformBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Answer
@@ -26,6 +27,7 @@ class Answer
      * @var bool
      *
      * @ORM\Column(name="result", type="boolean")
+     * @Assert\NotNull(message="please fill in")
      */
     private $result;
 

@@ -485,23 +485,21 @@ class Advert
         //dump($this->questions);
     }
 
-    public function setQuestion(\PlatformBundle\Entity\Question $question)
+    public function removeQuestion(\PlatformBundle\Entity\Question $question)
     {
-
+        $this->questions->removeElement($question);
     }
 
     public function getQuestions()
     {
-        /*$quest = new Question();
-        $quest->setText('qsdfghjk');
-        $this->questions[0] = $quest;*/
         return $this->questions;
-        //return 'aaaa';
     }
 
     public function addAnswer($answer)
     {
         $this->answer[] = $answer;
+
+        return $this;
     }
 
     public function removeAnswer($answer)

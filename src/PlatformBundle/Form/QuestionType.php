@@ -10,7 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use PlatformBundle\Entity\Question;
 use Symfony\Component\Form\CallbackTransformer;
-
+use Symfony\Component\Validator\Constraints\NotNull;
 
 class QuestionType extends AbstractType
 {
@@ -26,9 +26,12 @@ class QuestionType extends AbstractType
                 ),
                 'multiple' => false,
                 'expanded' => true,
-                'required' => true,
+                'required' => false,
                 'label' => '',
                 //'choices_as_values' => true,
+                'constraints' => [
+                    new NotNull(['message' => 'Your error message'])
+                ]
             ))
         ;
 

@@ -57,7 +57,7 @@ class QuestionController extends Controller
         $em->flush();
 
         return $this->render('PlatformBundle:Question:index.html.twig', [
-            'list' => $list
+            //'list' => $list
         ]);
     }
 }

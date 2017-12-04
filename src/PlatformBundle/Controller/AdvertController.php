@@ -115,7 +115,7 @@ class AdvertController extends Controller
             //$question->setAnswer($a);
             $advert->addQuestion($question);
         }
-        dump($advert);
+        //dump($advert);
         $form = $this->createForm(new AdvertType(), $advert);
 
         $form->handleRequest($request);
@@ -131,9 +131,9 @@ class AdvertController extends Controller
                 $answer->setQuestion($item);
                 $answer->setAdvert($advert);
             }
-            $em->persist($answer);
+            /*$em->persist($answer);
             $em->persist($advert);
-            $em->flush();
+            $em->flush();*/
             dump($form->getData());
             die;
         }

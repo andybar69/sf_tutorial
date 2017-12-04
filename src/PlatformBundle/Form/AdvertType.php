@@ -16,6 +16,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use PlatformBundle\Entity\Advert;
 use PlatformBundle\Entity\Question;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 
 class AdvertType extends AbstractType
@@ -26,7 +27,11 @@ class AdvertType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class)
+            ->add('title', TextType::class, array(
+                'required' => false,
+                'constraints' => array(
+                    new \Symfony\Component\Validator\Constraints\NotBlank(['message' => 'Your error message']),
+                )))
             ->add('author', TextType::class)
             ->add('content', TextareaType::class)
             ->add('date', DateType::class)
@@ -34,6 +39,11 @@ class AdvertType extends AbstractType
             ->add('questions', CollectionType::class,  array(
                 'entry_type' => QuestionType::class,
                 'entry_options' => array('label' => false),
+                'empty_data' => null,
+                'by_reference' => false,
+                'constraints' => [
+                    new NotNull(['message' => 'Your error message'])
+                ]
             ))
             ->add('image', new ImageType())
                ->add('categories', EntityType::class, array(

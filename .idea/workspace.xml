@@ -2,21 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a173d26d-2feb-486a-a80c-ea142ea715d5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PlatformBundle/Controller/QuestionController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PlatformBundle/Form/ImageType.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PlatformBundle/Form/QuestionAdminType.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PlatformBundle/Resources/views/Question/add.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PlatformBundle/Resources/views/Question/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sf_tutorial.iml" afterPath="$PROJECT_DIR$/.idea/sf_tutorial.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PlatformBundle/Controller/AdvertController.php" afterPath="$PROJECT_DIR$/src/PlatformBundle/Controller/AdvertController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PlatformBundle/Controller/QuestionController.php" afterPath="$PROJECT_DIR$/src/PlatformBundle/Controller/QuestionController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PlatformBundle/Entity/Advert.php" afterPath="$PROJECT_DIR$/src/PlatformBundle/Entity/Advert.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PlatformBundle/Entity/Answer.php" afterPath="$PROJECT_DIR$/src/PlatformBundle/Entity/Answer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PlatformBundle/Entity/Question.php" afterPath="$PROJECT_DIR$/src/PlatformBundle/Entity/Question.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PlatformBundle/Form/AdvertType.php" afterPath="$PROJECT_DIR$/src/PlatformBundle/Form/AdvertType.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PlatformBundle/Form/QuestionType.php" afterPath="$PROJECT_DIR$/src/PlatformBundle/Form/QuestionType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PlatformBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/PlatformBundle/Resources/config/routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PlatformBundle/Resources/views/Advert/view.html.twig" afterPath="$PROJECT_DIR$/src/PlatformBundle/Resources/views/Advert/view.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PlatformBundle/Resources/views/Advert/form.html.twig" afterPath="$PROJECT_DIR$/src/PlatformBundle/Resources/views/Advert/form.html.twig" />
     </list>
     <ignored path="sf_tutorial.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,8 +34,8 @@
       <file leaf-file-name="AdvertController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Controller/AdvertController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.375">
-              <caret line="128" column="16" selection-start-line="128" selection-start-column="16" selection-end-line="128" selection-end-column="16" />
+            <state vertical-scroll-proportion="-11.625">
+              <caret line="117" column="10" selection-start-line="117" selection-start-column="10" selection-end-line="117" selection-end-column="10" />
               <folding>
                 <element signature="e#45#78#0#PHP" expanded="true" />
                 <element signature="e#1837#1860#1#PHP" expanded="true" />
@@ -50,14 +43,14 @@
                 <element signature="e#3294#3322#1#PHP" expanded="true" />
                 <element signature="e#3413#3451#0#PHP" expanded="true" />
                 <element signature="e#3788#3813#1#PHP" expanded="true" />
-                <element signature="e#4895#4932#0#PHP" expanded="true" />
-                <element signature="e#6919#6941#1#PHP" expanded="true" />
-                <element signature="e#8172#8187#0#PHP" expanded="true" />
-                <element signature="e#8869#8892#1#PHP" expanded="true" />
-                <element signature="e#9078#9103#1#PHP" expanded="true" />
-                <element signature="e#9421#9436#0#PHP" expanded="true" />
-                <element signature="e#9803#9841#0#PHP" expanded="true" />
-                <element signature="e#10390#10428#0#PHP" expanded="true" />
+                <element signature="e#4901#4938#0#PHP" expanded="true" />
+                <element signature="e#6925#6947#1#PHP" expanded="true" />
+                <element signature="e#8178#8193#0#PHP" expanded="true" />
+                <element signature="e#8875#8898#1#PHP" expanded="true" />
+                <element signature="e#9084#9109#1#PHP" expanded="true" />
+                <element signature="e#9427#9442#0#PHP" expanded="true" />
+                <element signature="e#9809#9847#0#PHP" expanded="true" />
+                <element signature="e#10396#10434#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -75,45 +68,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QuestionController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Controller/QuestionController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.375">
-              <caret line="60" column="11" selection-start-line="60" selection-start-column="11" selection-end-line="60" selection-end-column="11" />
-              <folding>
-                <element signature="e#45#82#0#PHP" expanded="true" />
-                <element signature="e#438#463#1#PHP" expanded="true" />
-                <element signature="e#530#571#0#PHP" expanded="true" />
-                <element signature="e#1086#1125#0#PHP" expanded="true" />
-                <element signature="e#1410#1435#1#PHP" expanded="true" />
-                <element signature="e#1533#1574#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Resources/views/Question/index.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.71428573">
-              <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
-              <folding>
-                <element signature="e#162#174#0#Twig" expanded="true" />
-                <element signature="e#783#796#0#Twig" expanded="true" />
-                <element signature="e#920#935#0#Twig" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Answer.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Entity/Answer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.0">
-              <caret line="33" column="104" selection-start-line="33" selection-start-column="104" selection-end-line="33" selection-end-column="104" />
+            <state vertical-scroll-proportion="-3.125">
+              <caret line="29" column="46" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
               <folding>
                 <element signature="e#41#89#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="form.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Resources/views/Advert/form.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.0">
+              <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -128,25 +100,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QuestionAdminType.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Form/QuestionAdminType.php">
+      <file leaf-file-name="AdvertType.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Form/AdvertType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.875">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.8319328">
+              <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
               <folding>
-                <element signature="e#39#74#0#PHP" expanded="true" />
+                <element signature="e#39#76#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdvertType.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Form/AdvertType.php">
+      <file leaf-file-name="Advert.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Entity/Advert.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.25">
-              <caret line="35" column="59" selection-start-line="35" selection-start-column="59" selection-end-line="35" selection-end-column="59" />
+            <state vertical-scroll-proportion="-4.875">
+              <caret line="487" column="4" selection-start-line="487" selection-start-column="4" selection-end-line="487" selection-end-column="4" />
               <folding>
-                <element signature="e#39#76#0#PHP" expanded="true" />
+                <element signature="e#41#73#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -155,8 +127,8 @@
       <file leaf-file-name="QuestionType.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Form/QuestionType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.125">
-              <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
+            <state vertical-scroll-proportion="-12.375">
+              <caret line="32" column="68" selection-start-line="32" selection-start-column="68" selection-end-line="32" selection-end-column="68" />
               <folding>
                 <element signature="e#39#72#0#PHP" expanded="true" />
               </folding>
@@ -192,22 +164,22 @@
         <option value="$PROJECT_DIR$/src/PlatformBundle/Repository/ApplicationRepository.php" />
         <option value="$PROJECT_DIR$/src/PlatformBundle/Entity/Application.php" />
         <option value="$PROJECT_DIR$/src/PlatformBundle/Repository/AdvertRepository.php" />
-        <option value="$PROJECT_DIR$/src/PlatformBundle/Resources/views/Advert/form.html.twig" />
         <option value="$PROJECT_DIR$/src/PlatformBundle/Resources/views/Advert/add.html.twig" />
         <option value="$PROJECT_DIR$/src/PlatformBundle/Form/ImageType.php" />
         <option value="$PROJECT_DIR$/src/PlatformBundle/Resources/views/Advert/view.html.twig" />
-        <option value="$PROJECT_DIR$/src/PlatformBundle/Form/AdvertType.php" />
-        <option value="$PROJECT_DIR$/src/PlatformBundle/Entity/Advert.php" />
         <option value="$PROJECT_DIR$/src/PlatformBundle/Entity/Question.php" />
         <option value="$PROJECT_DIR$/src/PlatformBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/src/PlatformBundle/Form/QuestType.php" />
-        <option value="$PROJECT_DIR$/src/PlatformBundle/Controller/AdvertController.php" />
-        <option value="$PROJECT_DIR$/src/PlatformBundle/Form/QuestionType.php" />
         <option value="$PROJECT_DIR$/src/PlatformBundle/Form/QuestionAdminType.php" />
         <option value="$PROJECT_DIR$/src/PlatformBundle/Resources/views/Question/add.html.twig" />
-        <option value="$PROJECT_DIR$/src/PlatformBundle/Entity/Answer.php" />
-        <option value="$PROJECT_DIR$/src/PlatformBundle/Controller/QuestionController.php" />
         <option value="$PROJECT_DIR$/src/PlatformBundle/Resources/views/Question/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/PlatformBundle/Controller/QuestionController.php" />
+        <option value="$PROJECT_DIR$/src/PlatformBundle/Entity/Advert.php" />
+        <option value="$PROJECT_DIR$/src/PlatformBundle/Entity/Answer.php" />
+        <option value="$PROJECT_DIR$/src/PlatformBundle/Resources/views/Advert/form.html.twig" />
+        <option value="$PROJECT_DIR$/src/PlatformBundle/Controller/AdvertController.php" />
+        <option value="$PROJECT_DIR$/src/PlatformBundle/Form/QuestionType.php" />
+        <option value="$PROJECT_DIR$/src/PlatformBundle/Form/AdvertType.php" />
       </list>
     </option>
   </component>
@@ -215,6 +187,9 @@
   <component name="JsBuildToolPackageJson" detection-done="true" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
+  </component>
+  <component name="PhpServers">
+    <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
@@ -685,6 +660,14 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -993,100 +976,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Entity/Advert.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.490909">
-          <caret line="103" column="105" selection-start-line="103" selection-start-column="105" selection-end-line="103" selection-end-column="105" />
-          <folding>
-            <element signature="e#41#73#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Resources/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.68503934">
           <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Resources/views/Advert/form.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29411766">
-          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Form/AdvertType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.25">
-          <caret line="35" column="59" selection-start-line="35" selection-start-column="59" selection-end-line="35" selection-end-column="59" />
-          <folding>
-            <element signature="e#39#76#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Controller/AdvertController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.375">
-          <caret line="128" column="16" selection-start-line="128" selection-start-column="16" selection-end-line="128" selection-end-column="16" />
-          <folding>
-            <element signature="e#45#78#0#PHP" expanded="true" />
-            <element signature="e#1837#1860#1#PHP" expanded="true" />
-            <element signature="e#2282#2312#1#PHP" expanded="true" />
-            <element signature="e#3294#3322#1#PHP" expanded="true" />
-            <element signature="e#3413#3451#0#PHP" expanded="true" />
-            <element signature="e#3788#3813#1#PHP" expanded="true" />
-            <element signature="e#4895#4932#0#PHP" expanded="true" />
-            <element signature="e#6919#6941#1#PHP" expanded="true" />
-            <element signature="e#8172#8187#0#PHP" expanded="true" />
-            <element signature="e#8869#8892#1#PHP" expanded="true" />
-            <element signature="e#9078#9103#1#PHP" expanded="true" />
-            <element signature="e#9421#9436#0#PHP" expanded="true" />
-            <element signature="e#9803#9841#0#PHP" expanded="true" />
-            <element signature="e#10390#10428#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Resources/views/Question/add.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.375">
-          <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Form/QuestionAdminType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.875">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="e#39#74#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Entity/Answer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0">
-          <caret line="33" column="104" selection-start-line="33" selection-start-column="104" selection-end-line="33" selection-end-column="104" />
-          <folding>
-            <element signature="e#41#89#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Entity/Question.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.0">
-          <caret line="35" column="7" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
-          <folding>
-            <element signature="e#41#89#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1106,20 +1000,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Form/QuestionType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.125">
-          <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
-          <folding>
-            <element signature="e#39#72#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Controller/QuestionController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.375">
-          <caret line="60" column="11" selection-start-line="60" selection-start-column="11" selection-end-line="60" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.789916">
+          <caret line="59" column="14" selection-start-line="59" selection-start-column="14" selection-end-line="59" selection-end-column="14" />
           <folding>
             <element signature="e#45#82#0#PHP" expanded="true" />
             <element signature="e#438#463#1#PHP" expanded="true" />
@@ -1136,9 +1020,108 @@
         <state vertical-scroll-proportion="0.71428573">
           <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
           <folding>
-            <element signature="e#162#174#0#Twig" expanded="true" />
-            <element signature="e#783#796#0#Twig" expanded="true" />
-            <element signature="e#920#935#0#Twig" expanded="true" />
+            <element signature="e#162#174#0#Twig" expanded="false" />
+            <element signature="e#783#796#0#Twig" expanded="false" />
+            <element signature="e#920#935#0#Twig" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Form/QuestionAdminType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46218488">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="e#39#74#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Resources/views/Question/add.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.375">
+          <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Entity/Advert.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.875">
+          <caret line="487" column="4" selection-start-line="487" selection-start-column="4" selection-end-line="487" selection-end-column="4" />
+          <folding>
+            <element signature="e#41#73#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Resources/views/Advert/form.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.0">
+          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Entity/Question.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.0">
+          <caret line="35" column="7" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
+          <folding>
+            <element signature="e#41#89#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Entity/Answer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.125">
+          <caret line="29" column="46" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
+          <folding>
+            <element signature="e#41#89#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Controller/AdvertController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.625">
+          <caret line="117" column="10" selection-start-line="117" selection-start-column="10" selection-end-line="117" selection-end-column="10" />
+          <folding>
+            <element signature="e#45#78#0#PHP" expanded="true" />
+            <element signature="e#1837#1860#1#PHP" expanded="true" />
+            <element signature="e#2282#2312#1#PHP" expanded="true" />
+            <element signature="e#3294#3322#1#PHP" expanded="true" />
+            <element signature="e#3413#3451#0#PHP" expanded="true" />
+            <element signature="e#3788#3813#1#PHP" expanded="true" />
+            <element signature="e#4901#4938#0#PHP" expanded="true" />
+            <element signature="e#6925#6947#1#PHP" expanded="true" />
+            <element signature="e#8178#8193#0#PHP" expanded="true" />
+            <element signature="e#8875#8898#1#PHP" expanded="true" />
+            <element signature="e#9084#9109#1#PHP" expanded="true" />
+            <element signature="e#9427#9442#0#PHP" expanded="true" />
+            <element signature="e#9809#9847#0#PHP" expanded="true" />
+            <element signature="e#10396#10434#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Form/QuestionType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.375">
+          <caret line="32" column="68" selection-start-line="32" selection-start-column="68" selection-end-line="32" selection-end-column="68" />
+          <folding>
+            <element signature="e#39#72#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PlatformBundle/Form/AdvertType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8319328">
+          <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
+          <folding>
+            <element signature="e#39#76#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
