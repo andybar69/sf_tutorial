@@ -1,20 +1,58 @@
 # To get started with security, check out the documentation:
 # https://symfony.com/doc/current/security.html
 security:
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
 
-    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
     providers:
         in_memory:
-            memory: ~
+            memory:
+                users:
+                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
+                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
 
     firewalls:
-        # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
         main:
-            anonymous: ~
+            pattern:   ^/
+            anonymous: true
+            provider:  in_memory
+            form_login:
+                login_path: login
+                check_path: login_check
+            logout:
+                path:   logout
+                target: /platform
+
+    access_control:
+        - { path: ^/platform, roles: IS_AUTHENTICATED_ANONYMOUSLY, ips: [127.0.0.1, ::1] }
+        #- path: ^/platform
+        #  allow_if: "request.getClientIp() in @=service('platform.access_manager').getAllowedIPs()"
+
+    access_decision_manager:
+        # strategy can be: affirmative, unanimous or consensus
+        strategy: unanimous
+
+    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    #providers:
+    #    in_memory:
+    #        memory: ~
+
+    #firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+    #    dev:
+    #       pattern: ^/(_(profiler|wdt)|css|images|js)/
+    #      security: false
+
+    #    main:
+    #        anonymous: ~
             # activate different ways to authenticate
 
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate

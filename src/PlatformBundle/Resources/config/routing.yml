@@ -26,6 +26,9 @@ platform_delete:
     requirements:
         id: \d+
 
+platform_test:
+    path: /test
+    defaults: { _controller: PlatformBundle:Advert:test }
 
 question_list:
     path: /question

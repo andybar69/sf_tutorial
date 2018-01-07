@@ -1,0 +1,6 @@
+{% block form_widget_simple %}
+<div class="anb-test">
+    {%- set type = type|default('text') -%}
+    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+</div>
+{% endblock %}

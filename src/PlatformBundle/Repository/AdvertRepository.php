@@ -3,6 +3,7 @@
 namespace PlatformBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use PlatformBundle\Entity\Category;
 /**
  * AdvertRepository
  *
@@ -26,6 +27,35 @@ class AdvertRepository extends EntityRepository
             ->getQuery()
             ->getResult()
             ;
+    }
+
+    public function getItems($id)
+    {
+        $qb = $this
+            ->createQueryBuilder('a')
+            ->select('a.id')
+            ->leftJoin('a.categories', 'cat')
+            ->addSelect('cat.id, cat.name')
+            ->where('a.id = '.$id)
+        ;
+
+        //dump($qb->getQuery()->getSQL());
+
+        $data = $qb
+            ->getQuery()
+            ->getResult();
+
+        $output = [];
+        if ($data) {
+            foreach ($data as $categories) {
+                $obj = new Category();
+                $obj->setId($categories['id'])->setName($categories['name']);
+                $output[] = $obj;
+                unset($obj);
+            }
+        }
+
+        return $output;
     }
 
     public function createUniqueSlug($slug)

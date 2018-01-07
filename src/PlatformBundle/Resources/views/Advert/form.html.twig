@@ -1,3 +1,7 @@
+{#{% form_theme form 'form/fields.html.twig' %} #}
+{# {% form_theme form '@Platform/Form/common.html.twig' %} #}
+{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+
 <h3>Formulaire d'annonce</h3>
 
 {# On laisse vide la vue pour l'instant, on la comblera plus tard
@@ -6,6 +10,20 @@
 
 <div class="well">
     Ici se trouvera le formulaire.
+
+    {{ form_start(form) }}
     {{ form_errors(form) }}
-        {{ form(form) }}
+<div>
+   {# {{ form_label(form.title) }}
+    {{ form_widget(form.title) }}
+    {{ form_errors(form.title) }} #}
+</div>
+
+
+    {% if form.vars.value.image is not null %}
+        {{ form_widget(form.image) }}
+        <img src="{{ asset(form.vars.value.image.pathname) }}">
+    {% endif %}
+
+        {{ form_end(form) }}
 </div>

@@ -8,6 +8,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -32,11 +33,11 @@ class AdvertType extends AbstractType
                 'constraints' => array(
                     new \Symfony\Component\Validator\Constraints\NotBlank(['message' => 'Your error message']),
                 )))
-            ->add('author', TextType::class)
-            ->add('content', TextareaType::class)
+            ->add('author', TextType::class, ['required' => false])
+            ->add('content', TextareaType::class, ['required' => false])
             ->add('date', DateType::class)
             ->add('published', CheckboxType::class, ['required' => false])
-            ->add('questions', CollectionType::class,  array(
+            ->add('questions', CollectionType::class, array(
                 'entry_type' => QuestionType::class,
                 'entry_options' => array('label' => false),
                 'empty_data' => null,
@@ -45,13 +46,13 @@ class AdvertType extends AbstractType
                     new NotNull(['message' => 'Your error message'])
                 ]
             ))
-            ->add('image', new ImageType())
-               ->add('categories', EntityType::class, array(
-                   'class'    => 'PlatformBundle:Category',
-                   'choice_label' => 'name',
-                   'multiple' => true,
-                   'expanded' => false,
-               ))
+            ->add('image', /*new ImageType()*/ FileType::class, ['required' => false])
+            ->add('categories', EntityType::class, array(
+                'class'    => 'PlatformBundle:Category',
+                'choice_label' => 'name',
+                'multiple' => true,
+                'expanded' => false,
+            ))
             ->add('save', SubmitType::class)
         ;
     }

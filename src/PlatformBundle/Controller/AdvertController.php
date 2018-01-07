@@ -3,6 +3,7 @@
 namespace PlatformBundle\Controller;
 
 use PlatformBundle\Entity\Answer;
+use PlatformBundle\Form\AdvertEditType;
 use PlatformBundle\Helpers\Test;
 use PlatformBundle\Entity\Advert;
 use PlatformBundle\Entity\Image;
@@ -10,6 +11,7 @@ use PlatformBundle\Entity\Application;
 use PlatformBundle\Entity\Skill;
 use PlatformBundle\Entity\AdvertSkill;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,6 +24,7 @@ class AdvertController extends Controller
     public function indexAction($page)
     {
         //$env = $this->container->get('kernel')->getEnvironment();
+
 
         $listAdverts = array(
             array(
@@ -50,6 +53,7 @@ class AdvertController extends Controller
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('PlatformBundle:Advert');
         $listAdverts = $repo->findAll();
+        //$this->denyAccessUnlessGranted('view');
         return $this->render('PlatformBundle:Advert:index.html.twig', array(
             'listAdverts' => $listAdverts
         ));
@@ -120,22 +124,27 @@ class AdvertController extends Controller
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() and $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+        if ($form->isSubmitted() && $form->isValid()) {
             $advert = $form->getData();
-            $questions = $advert->getQuestions();
-            foreach ($questions as $item) {
-                dump($item);
-                $answer = $item->getAnswer();
-                $advert->addAnswer($answer);
-                $answer->setQuestion($item);
-                $answer->setAdvert($advert);
-            }
-            /*$em->persist($answer);
-            $em->persist($advert);
-            $em->flush();*/
-            dump($form->getData());
+            dump($advert);
             die;
+            $questions = $advert->getQuestions();
+            /*if ($questions) {
+                foreach ($questions as $item) {
+                    dump($item);
+                    $answer = $item->getAnswer();
+                    $advert->addAnswer($answer);
+                    $answer->setQuestion($item);
+                    $answer->setAdvert($advert);
+                }
+            }*/
+
+            //$em->persist($answer);
+            $em->persist($advert);
+            $em->flush();
+
+            $this->addFlash('add_advert_ok', 'Your advert has been successfully added!');
+            return $this->redirectToRoute('platform_view', array('id' => $advert->getId()));
         }
 
         return $this->render('PlatformBundle:Advert:add.html.twig',
@@ -245,23 +254,46 @@ class AdvertController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $advert = $em->getRepository('PlatformBundle:Advert')->find($id);
+        dump($advert);
+        //dump($advert->getCategories());
 
         if (null === $advert) {
             throw new NotFoundHttpException("L'annonce d'id ".$id." n'existe pas.");
         }
 
-        $arCategories = $em->getRepository('PlatformBundle:Category')->findAll();
+        //$categories = $em->getRepository('PlatformBundle:Category')->findAll();
+        $categories = $em->getRepository('PlatformBundle:Advert')->getItems($id);
+        dump($categories);
 
-        foreach ($arCategories as $category) {
+        /*foreach ($categories as $category) {
             $advert->addCategory($category);
-        }
-        $em->flush();
+        }*/
+        //$em->flush();
+dump($this->getParameter('images_directory'));
+        dump(realpath($this->getParameter('images_directory')));
+        //$advert->setImage(new File(realpath($this->getParameter('images_directory')).'/'.$advert->getImage()));
+        $path = $advert->getImage()->getWebPath();
+        dump($path);
+        $advert->setImage(new File($advert->getImage()->getWebPath()));
+        //$o = new File($advert->getImage()->getWebPath());
 
 
-        if ($request->isMethod('POST')) {
+        $form = $this->createForm(new AdvertEditType(), $advert);
+        //dump($advert->getCategories());
+        $form->handleRequest($request);
+
+        if ($request->isMethod('POST') && $form->isValid()) {
+
+            $advert = $form->getData();
+            dump($advert);
+            $categories = $advert->getCategories();
+
+            //$em->persist($advert);
+            $em->flush();
+
             $request->getSession()->getFlashBag()->add('notice', 'Annonce bien modifiée.');
 
-            return $this->redirectToRoute('platform_view', array('id' => 5));
+            //return $this->redirectToRoute('platform_view', array('id' => $id));
         }
 
         /*$advert = array(
@@ -271,15 +303,46 @@ class AdvertController extends Controller
             'content' => 'Nous recherchons un développeur Symfony2 débutant sur Lyon. Blabla…',
             'date'    => new \Datetime()
         );*/
+        //dump($path);
 
         return $this->render('PlatformBundle:Advert:edit.html.twig', array(
-            'advert' => $advert
+            'form' => $form->createView(),
+            'pathToImage' => $path
         ));
     }
 
-    public function deleteAction($id)
+    public function deleteAction($id, Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
 
+        // On récupère l'annonce $id
+        $advert = $em->getRepository('OCPlatformBundle:Advert')->find($id);
+
+        if (null === $advert) {
+            throw new NotFoundHttpException("L'annonce d'id ".$id." n'existe pas.");
+        }
+
+        // On crée un formulaire vide, qui ne contiendra que le champ CSRF
+        // Cela permet de protéger la suppression d'annonce contre cette faille
+        $form = $this->createFormBuilder()->getForm();
+
+        if ($form->handleRequest($request)->isValid()) {
+            $em->remove($advert);
+            $em->flush();
+
+            $this->addFlash('info', "L'annonce a bien été supprimée.");
+
+            return $this->redirect($this->generateUrl('platform_home'));
+
+        }
+
+
+        // Si la requête est en GET, on affiche une page de confirmation avant de supprimer
+
+        return $this->render('PlatformBundle:Advert:delete.html.twig', array(
+            'advert' => $advert,
+            'form'   => $form->createView()
+        ));
     }
 
     public function menuAction($limit)
@@ -297,5 +360,33 @@ class AdvertController extends Controller
             // les variables nécessaires au template !
             'listAdverts' => $listAdverts
         ));
+    }
+
+    public function testAction()
+    {
+        $advert = new Advert;
+
+        $advert->setDate(new \Datetime());  // Champ « date » OK
+        $advert->setTitle('abc');           // Champ « title » incorrect : moins de 10 caractères
+        //$advert->setContent('blabla');    // Champ « content » incorrect : on ne le définit pas
+        $advert->setAuthor('A');            // Champ « author » incorrect : moins de 2 caractères
+
+        // On récupère le service validator
+        $validator = $this->get('validator');
+
+        // On déclenche la validation sur notre object
+        $listErrors = $validator->validate($advert);
+
+        // Si le tableau n'est pas vide, on affiche les erreurs
+        if(count($listErrors) > 0) {
+
+            return new Response(dump($listErrors));
+
+        } else {
+
+            return new Response("L'annonce est valide !");
+
+        }
+
     }
 }

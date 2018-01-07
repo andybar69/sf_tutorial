@@ -4,6 +4,9 @@ namespace PlatformBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+
 
 /**
  * Question
@@ -13,6 +16,20 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Question
 {
+    /**
+     * @Assert\Callback()
+     */
+    public function validate(ExecutionContextInterface $context)
+    {
+        if ($this->getAnswer()->getResult() === null) {
+            $context->buildViolation('Either a preset, or a manual entry must be supplied')->addViolation();
+        }
+
+        /*if ($this->getPresetChoice() !== null && $this->getManualEntry() !== null) {
+            $context->buildViolation('Cannot use both a preset and a manual entry')->addViolation();
+        }*/
+    }
+
     /**
      * @var int
      *
@@ -39,6 +56,7 @@ class Question
     /****
      * @ORM\OneToMany(targetEntity="PlatformBundle\Entity\Answer", mappedBy="question", cascade="{persist}")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\IsValid()
      */
     private $answer;
 

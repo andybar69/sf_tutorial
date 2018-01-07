@@ -29,9 +29,6 @@ class QuestionType extends AbstractType
                 'required' => false,
                 'label' => '',
                 //'choices_as_values' => true,
-                'constraints' => [
-                    new NotNull(['message' => 'Your error message'])
-                ]
             ))
         ;
 
@@ -42,6 +39,9 @@ class QuestionType extends AbstractType
                 },
                 function ($property) {
                     //return (bool) $property;
+                   /* if (is_null($property)) {
+                        throw new \Exception('Bad value');
+                    }*/
                     $answer = new Answer();
                     $answer->setResult($property);
                     return $answer;
@@ -55,7 +55,8 @@ class QuestionType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Question::class
+            'data_class' => Question::class,
+            'error_bubbling' => false,
         ));
     }
 

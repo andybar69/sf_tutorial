@@ -5,3 +5,4 @@ services:
     platform.antispam:
         class: PlatformBundle\Antispam\Antispam
         arguments: ['@mailer', '%locale%', 50]
+

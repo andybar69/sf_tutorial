@@ -8,6 +8,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 //use Symfony\Component\Console\Question\Question;
 use PlatformBundle\Entity\Question;
+use Symfony\Component\Validator\Constraints as Assert;
+use PlatformBundle\Validator\Constraints as CustomValidator;
 
 /**
  * Advert
@@ -32,6 +34,7 @@ class Advert
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\Length(min=10, minMessage="Very short")
      */
     private $title;
 
@@ -39,6 +42,7 @@ class Advert
      * @var string
      *
      * @ORM\Column(name="author", type="string", length=255)
+     * @Assert\Length(min=2)
      */
     private $author;
 
@@ -46,6 +50,7 @@ class Advert
      * @var string
      *
      * @ORM\Column(name="content", type="text")
+     * @Assert\NotBlank()
      */
     private $content;
 
@@ -53,6 +58,8 @@ class Advert
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime")
+     *
+     * @Assert\DateTime()
      */
     private $date;
 
@@ -63,12 +70,17 @@ class Advert
     private $published = true;
 
     /**
-     * @ORM\OneToOne(targetEntity="PlatformBundle\Entity\Image", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="PlatformBundle\Entity\Image", cascade={"persist", "remove"})
+     * @Assert\Valid()
      */
     private $image;
 
     /**
-     * @ORM\ManyToMany(targetEntity="PlatformBundle\Entity\Category", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="PlatformBundle\Entity\Category", cascade={"persist"}, fetch="EAGER")
+     * @ORM\JoinTable(name="advert_category",
+     *      joinColumns={@ORM\JoinColumn(name="advert_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")}
+     *      )
      */
     private $categories;
 
@@ -94,7 +106,10 @@ class Advert
      */
     private $slug;
 
-
+    /**
+     * @var ArrayCollection
+     * @CustomValidator\QuestionAnswer()
+     */
     private $questions;
 
 
@@ -254,7 +269,7 @@ class Advert
      *
      * @return Advert
      */
-    public function setImage(\PlatformBundle\Entity\Image $image = null)
+    public function setImage(/*\PlatformBundle\Entity\Image*/ $image = null)
     {
         $this->image = $image;
 
@@ -324,13 +339,14 @@ class Advert
     }
 
     /**
-     * Remove application
-     *
-     * @param \PlatformBundle\Entity\Application $application
+     * @param Application $application
+     * @return $this
      */
     public function removeApplication(\PlatformBundle\Entity\Application $application)
     {
         $this->applications->removeElement($application);
+
+        return $this;
     }
 
     /**

@@ -1,3 +1,7 @@
+my_user:
+    resource: "@MyUserBundle/Resources/config/routing.yml"
+    prefix:   /user
+
 platform:
     resource: "@PlatformBundle/Resources/config/routing.yml"
     prefix:   /platform
@@ -5,3 +9,4 @@ platform:
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
+

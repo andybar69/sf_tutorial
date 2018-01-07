@@ -29,6 +29,13 @@ class Category
     private $name;
 
 
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
     /**
      * Get id
      *

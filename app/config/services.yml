@@ -7,3 +7,23 @@ services:
     #service_name:
     #    class: AppBundle\Directory\ClassName
     #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
+
+    custom.security.authentication.listener:
+        class: PlatformBundle\Security\Firewall\CustomListener
+        public: false
+
+    listener.requestresponse:
+         class: PlatformBundle\Listener\RequestListener
+         tags:
+           - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
+    platform.access_manager:
+        class: PlatformBundle\Service\AccessManager
+        arguments: ["%kernel.root_dir%", "@doctrine.orm.default_entity_manager"]
+
+    security.access.blacklist_voter:
+        class: PlatformBundle\Security\Authorization\Voter\ClientIpVoter
+        arguments:  ["@service_container", "@platform.access_manager"]
+        tags:
+            - { name: security.voter }
+
